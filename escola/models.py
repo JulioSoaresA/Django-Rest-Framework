@@ -24,3 +24,16 @@ class Curso(models.Model):
     
     def __str__(self):
         return self.codigo
+
+
+class Matricula(models.Model):
+    TURNO = (
+        ('M', 'Matutino'),
+        ('V', 'Vespertino'),
+        ('N', 'Noturno')
+    )
+    
+    estudante = models.ForeignKey(Estudante, on_delete=models.CASCADE, related_name='estudante')
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='curso')
+    turno = models.CharField(max_length=1, choices=TURNO, blank=False, null=False, default='M')
+    data_matricula = models.DateField(auto_now=True)
