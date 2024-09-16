@@ -6,7 +6,7 @@ class Estudante(models.Model):
     email = models.EmailField(blank=True, max_length=100)
     cpf = models.CharField(max_length=11, unique=True)
     data_nascimento = models.DateField()
-    celular = models.CharField(max_length=14)
+    celular = models.CharField(max_length=15)
     
     def __str__(self):
         return self.nome
